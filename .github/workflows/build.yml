@@ -12,12 +12,27 @@ jobs:
       - name: Prenos kode
         uses: actions/checkout@v4
 
-      - name: Buildozer APK Gradnja prek uradne akcije
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
+      - name: Nastavi Java JDK
+        uses: actions/setup-java@v4
         with:
-          workdir: .
-          buildozer_version: master
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Nastavi Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Namesti sistemska orodja
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev libltdl-dev
+          pip install --upgrade pip
+          pip install Cython==0.29.36 buildozer virtualenv
+
+      - name: Zgradi APK paket
+        run: |
+          buildozer -v android debug
 
       - name: Shrani APK datoteko za prenos
         uses: actions/upload-artifact@v4
