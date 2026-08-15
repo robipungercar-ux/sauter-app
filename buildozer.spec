@@ -6,15 +6,15 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,ttf
 version = 1.0.0
 
-requirements = python3==3.10.13,hostpython3==3.10.13,kivy,pyserial,openpyxl,et_xmlfile
+requirements = python3,kivy,pyserial,openpyxl,et_xmlfile
 
 orientation = landscape
 fullscreen = 1
 
 android.permissions = CAMERA,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
-android.api = 33
+android.api = 31
 android.minapi = 21
-android.ndk = 25b
+android.ndk = 23b
 android.archs = arm64-v8a
 android.allow_backup = True
 
