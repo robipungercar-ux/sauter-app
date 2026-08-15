@@ -6,7 +6,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,ttf
 version = 1.0.0
 
-requirements = python3==3.11.8,hostpython3==3.11.8,kivy,pyserial,openpyxl,et_xmlfile,pillow,pyjnius
+requirements = python3==3.10.13,hostpython3==3.10.13,kivy,pyserial,openpyxl,et_xmlfile
 
 orientation = landscape
 fullscreen = 1
@@ -20,6 +20,7 @@ android.allow_backup = True
 
 android.wakelock = True
 android.accept_sdk_license = True
+android.skip_update = False
 
 [buildozer]
 log_level = 2
