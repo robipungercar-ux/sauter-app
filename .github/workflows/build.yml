@@ -27,8 +27,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev libltdl-dev
-          pip install --upgrade pip
-          pip install Cython==0.29.36 buildozer virtualenv
+          pip install --upgrade pip setuptools wheel
+          pip install "Cython<3.0" buildozer virtualenv
 
       - name: Zgradi APK paket
         run: |
