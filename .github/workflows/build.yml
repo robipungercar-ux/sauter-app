@@ -1,0 +1,29 @@
+name: Zgradi Sauter APK
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Prenos kode
+        uses: actions/checkout@v4
+
+      - name: Nastavi Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Namesti orodja in Buildozer
+        run: |
+          sudo apt update
+          sudo apt install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+          pip install --upgrade buildozer cython virtualenv
+
+      - name: Sestavi APK paket
+        run: buildozer -v android debug
+
+      - name: Shrani APK datoteko za prenos
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sauter_App_Namestitev
+          path: bin/*.apk
