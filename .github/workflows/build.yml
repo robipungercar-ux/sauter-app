@@ -6,21 +6,21 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Prenos kode
         uses: actions/checkout@v4
 
-      - name: Buildozer APK Gradnja
+      - name: Buildozer APK Gradnja prek uradne akcije
         uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
           workdir: .
-          buildozer_version: stable
+          buildozer_version: master
 
       - name: Shrani APK datoteko za prenos
         uses: actions/upload-artifact@v4
         with:
           name: Sauter_App_Namestitev
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
